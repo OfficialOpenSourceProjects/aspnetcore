@@ -100,7 +100,7 @@ namespace RunTests
                 Directory.CreateDirectory(aspnetRuntimePath);
                 foreach (var file in Directory.EnumerateFiles("Microsoft.AspNetCore.App", "*.*", SearchOption.AllDirectories))
                 {
-                    File.Copy(file, aspnetRuntimePath + file, overwrite: true);
+                    File.Copy(file, Path.Combine(aspnetRuntimePath, file), overwrite: true);
                 }
 
                 Console.WriteLine();
