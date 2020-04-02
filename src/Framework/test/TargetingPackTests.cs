@@ -20,6 +20,7 @@ namespace Microsoft.AspNetCore
         private readonly string _expectedRid;
         private readonly string _targetingPackRoot;
         private readonly ITestOutputHelper _output;
+        private readonly bool _isTargetingPackBuilding;
 
         public TargetingPackTests(ITestOutputHelper output)
         {
@@ -28,11 +29,17 @@ namespace Microsoft.AspNetCore
             _targetingPackRoot = string.IsNullOrEmpty(Environment.GetEnvironmentVariable("helix")) 
                 ? Path.Combine(TestData.GetTestDataValue("TargetingPackLayoutRoot"), "packs", "Microsoft.AspNetCore.App.Ref", TestData.GetTestDataValue("TargetingPackVersion"))
                 : Path.Combine(Environment.GetEnvironmentVariable("HELIX_WORKITEM_ROOT"), "Microsoft.AspNetCore.App.Ref");
+            _isTargetingPackBuilding = bool.Parse(TestData.GetTestDataValue("IsTargetingPackBuilding"));
         }
 
         [Fact]
         public void AssembliesAreReferenceAssemblies()
         {
+            if (!_isTargetingPackBuilding)
+            {
+                return;
+            }
+
             IEnumerable<string> dlls = Directory.GetFiles(_targetingPackRoot, "*.dll", SearchOption.AllDirectories);
             Assert.NotEmpty(dlls);
 
@@ -60,6 +67,11 @@ namespace Microsoft.AspNetCore
         [Fact]
         public void PlatformManifestListsAllFiles()
         {
+            if (!_isTargetingPackBuilding)
+            {
+                return;
+            }
+
             var platformManifestPath = Path.Combine(_targetingPackRoot, "data", "PlatformManifest.txt");
             var expectedAssemblies = TestData.GetSharedFxDependencies()
                 .Split(';', StringSplitOptions.RemoveEmptyEntries)
