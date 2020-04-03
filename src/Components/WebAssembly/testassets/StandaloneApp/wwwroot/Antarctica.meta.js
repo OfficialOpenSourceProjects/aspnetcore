@@ -1,0 +1,1 @@
+[["Casey",311],["Davis",311],["DumontDUrville",216],["Macquarie",1543],["Mawson",225],["McMurdo",2460],["Palmer",1432],["Rothera",186],["South_Pole",2460],["Syowa",187],["Troll",1176],["Vostok",187]]

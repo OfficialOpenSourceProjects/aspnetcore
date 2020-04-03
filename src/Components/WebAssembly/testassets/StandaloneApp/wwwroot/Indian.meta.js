@@ -1,0 +1,1 @@
+[["Antananarivo",285],["Chagos",225],["Christmas",182],["Cocos",191],["Comoro",285],["Kerguelen",187],["Mahe",187],["Maldives",220],["Mauritius",267],["Mayotte",285],["Reunion",187]]

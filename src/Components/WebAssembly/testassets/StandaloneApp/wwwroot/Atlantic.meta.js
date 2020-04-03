@@ -1,0 +1,1 @@
+[["Azores",3493],["Bermuda",2004],["Canary",1911],["Cape_Verde",284],["Faeroe",1829],["Faroe",1829],["Jan_Mayen",2251],["Madeira",3484],["Reykjavik",1188],["South_Georgia",181],["St_Helena",170],["Stanley",1251]]
